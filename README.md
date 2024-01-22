@@ -172,14 +172,6 @@ all while utilizing the same codebase.
       <!-- since the platform related libraries are no more needed-->
       <!-- <scope>compile</scope>-->
   </dependency>
-
-  <!-- when running on desktop/device only-->
-  <dependency>
-    <groupId>org.bytedeco</groupId>
-    <artifactId>flandmark-platform</artifactId>
-    <version>1.07-1.5.8</version>
-    <scope>runtime</scope>
-  </dependency>
 </dependencies>
 ```
 
@@ -192,7 +184,6 @@ plugins {
 dependencies {
     implementation("one.jpro.platform:jpro-media:0.2.11-SNAPSHOT")
     implementation "org.bytedeco:javacv-platform:1.5.9" // use compileOnly configuration when running/deploying with JPro
-    runtimeOnly 'org.bytedeco:flandmark-platform:1.07-1.5.8' // when running on desktop/device only
 }
 ```
 

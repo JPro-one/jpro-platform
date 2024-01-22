@@ -1,4 +1,4 @@
-package one.jpro.platform.media.recorder.impl;
+package one.jpro.platform.media.recorder;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.WeakInvalidationListener;
@@ -6,7 +6,6 @@ import javafx.beans.property.*;
 import javafx.scene.image.ImageView;
 import one.jpro.platform.media.MediaEngine;
 import one.jpro.platform.media.MediaView;
-import one.jpro.platform.media.recorder.MediaRecorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,23 +14,23 @@ import org.slf4j.LoggerFactory;
  *
  * @author Besmir Beqiri
  */
-public class FXMediaRecorderView extends MediaView {
+public class NativeMediaRecorderView extends MediaView {
 
-    private final Logger log = LoggerFactory.getLogger(FXMediaRecorderView.class);
+    private static final Logger logger = LoggerFactory.getLogger(NativeMediaRecorderView.class);
 
     private ImageView fxFrameView;
 
-    public FXMediaRecorderView() {
+    public NativeMediaRecorderView() {
         getStyleClass().add(DEFAULT_STYLE_CLASS);
     }
 
-    public FXMediaRecorderView(FXMediaRecorder mediaRecorder) {
+    public NativeMediaRecorderView(NativeMediaRecorder mediaRecorder) {
         this();
         setMediaEngine(mediaRecorder);
     }
 
     @Override
-    public ObjectProperty<MediaEngine> mediaEngineProperty() {
+    public final ObjectProperty<MediaEngine> mediaEngineProperty() {
         if (mediaEngine == null) {
             mediaEngine = new SimpleObjectProperty<>(this, "mediaEngine") {
 
@@ -61,7 +60,7 @@ public class FXMediaRecorderView extends MediaView {
     }
 
     @Override
-    public DoubleProperty fitHeightProperty() {
+    public final DoubleProperty fitHeightProperty() {
         if (fitHeight == null) {
             fitHeight = new SimpleDoubleProperty(this, "fitHeight") {
 
@@ -84,7 +83,7 @@ public class FXMediaRecorderView extends MediaView {
                     if (fxFrameView != null) {
                         fxFrameView.setPreserveRatio(get());
                     }
-                    log.trace("preserve ratio: {}", isPreserveRatio());
+                    logger.trace("preserve ratio: {}", isPreserveRatio());
                 }
             };
         }
@@ -99,7 +98,7 @@ public class FXMediaRecorderView extends MediaView {
                 getChildren().add(fxFrameView);
             }
             fxFrameView.setFitWidth(fitWidth);
-            log.trace("video width: {}", fitWidth);
+            logger.trace("video width: {}", fitWidth);
         }
     }
 
@@ -111,7 +110,7 @@ public class FXMediaRecorderView extends MediaView {
                 getChildren().add(fxFrameView);
             }
             fxFrameView.setFitHeight(fitHeight);
-            log.trace("video height: " + fitHeight);
+            logger.trace("video height: " + fitHeight);
         }
     }
 
@@ -120,7 +119,7 @@ public class FXMediaRecorderView extends MediaView {
             new WeakInvalidationListener(updateViewContainerListener);
 
     private void updateViewContainer() {
-        if (getScene() != null && getMediaEngine() instanceof FXMediaRecorder fxMediaRecorder) {
+        if (getScene() != null && getMediaEngine() instanceof NativeMediaRecorder fxMediaRecorder) {
             fxFrameView = fxMediaRecorder.getCameraView();
             fxFrameView.setPreserveRatio(isPreserveRatio());
             setInternalFitWidth(getFitWidth());

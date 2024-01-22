@@ -11,7 +11,6 @@ dependencies {
 
     implementation "org.bytedeco:javacv-platform:$JAVACV_VERSION"
 //    compileOnly "org.bytedeco:javacv-platform:$JAVACV_VERSION" // when running on JPro
-    runtimeOnly 'org.bytedeco:flandmark-platform:1.07-1.5.8' // when running on desktop/device only
     implementation "io.github.mkpaz:atlantafx-base:$ATLANTAFX_VERSION"
     runtimeOnly "ch.qos.logback:logback-classic:$LOGBACK_VERSION"
 }

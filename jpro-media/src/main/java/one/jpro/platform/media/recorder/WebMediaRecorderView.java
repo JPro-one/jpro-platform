@@ -1,9 +1,8 @@
-package one.jpro.platform.media.recorder.impl;
+package one.jpro.platform.media.recorder;
 
 import com.jpro.webapi.WebAPI;
 import one.jpro.platform.media.MediaView;
 import one.jpro.platform.media.WebMediaView;
-import one.jpro.platform.media.recorder.MediaRecorder;
 
 /**
  * {@link MediaView} implementation for a web {@link MediaRecorder}.

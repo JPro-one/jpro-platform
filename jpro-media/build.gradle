@@ -5,12 +5,12 @@ plugins {
 dependencies {
     implementation "com.sandec.jpro:jpro-webapi:$JPRO_VERSION"
     compileOnly "org.bytedeco:javacv-platform:$JAVACV_VERSION"
+    runtimeOnly 'org.bytedeco:flandmark-platform:1.07-1.5.8'
     api "org.slf4j:slf4j-api:$SLF4J_API_VERSION"
     api "org.json:json:$JSON_VERSION"
 
     testImplementation "org.testfx:testfx-junit5:$TESTFX_VERSION"
     testImplementation "org.bytedeco:javacv-platform:$JAVACV_VERSION"
-    testRuntimeOnly 'org.bytedeco:flandmark-platform:1.07-1.5.8'
 }
 
 compileJava {

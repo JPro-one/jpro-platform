@@ -15,10 +15,10 @@ import one.jpro.platform.media.player.impl.FXMediaPlayerView;
 import one.jpro.platform.media.player.impl.WebMediaPlayer;
 import one.jpro.platform.media.player.impl.WebMediaPlayerView;
 import one.jpro.platform.media.recorder.MediaRecorder;
-import one.jpro.platform.media.recorder.impl.FXMediaRecorder;
-import one.jpro.platform.media.recorder.impl.FXMediaRecorderView;
-import one.jpro.platform.media.recorder.impl.WebMediaRecorder;
-import one.jpro.platform.media.recorder.impl.WebMediaRecorderView;
+import one.jpro.platform.media.recorder.NativeMediaRecorder;
+import one.jpro.platform.media.recorder.NativeMediaRecorderView;
+import one.jpro.platform.media.recorder.WebMediaRecorder;
+import one.jpro.platform.media.recorder.WebMediaRecorderView;
 
 /**
  * Provides a view of {@link MediaSource} being played by a {@link MediaPlayer}
@@ -136,8 +136,8 @@ public abstract class MediaView extends Region {
      * @return a {@link MediaView} object.
      */
     public static MediaView create(MediaRecorder mediaRecorder) {
-        if (mediaRecorder instanceof FXMediaRecorder fxMediaRecorder) {
-            return new FXMediaRecorderView(fxMediaRecorder);
+        if (mediaRecorder instanceof NativeMediaRecorder fxMediaRecorder) {
+            return new NativeMediaRecorderView(fxMediaRecorder);
         } else if (mediaRecorder instanceof WebMediaRecorder webMediaRecorder) {
             return new WebMediaRecorderView(webMediaRecorder);
         } else {

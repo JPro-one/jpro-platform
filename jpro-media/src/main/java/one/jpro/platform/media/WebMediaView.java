@@ -9,7 +9,7 @@ import javafx.beans.property.*;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import one.jpro.platform.media.recorder.impl.WebMediaRecorder;
+import one.jpro.platform.media.recorder.WebMediaRecorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package one.jpro.platform.media.recorder.impl;
+package one.jpro.platform.media.recorder;
 
 import org.json.JSONObject;
 
