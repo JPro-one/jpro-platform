@@ -143,4 +143,29 @@ public class User implements Authentication {
         }
         return exists;
     }
+
+    /**
+     * Merges this user with another user, combining their roles and attributes.
+     * The name of this user is retained.
+     *
+     * @param other the other user to merge with.
+     * @return a new User instance combining the information of both users.
+     */
+    public User merge(User other) {
+        // Check if the other user is null, return this user
+        if (other == null) {
+            return this;
+        }
+
+        // Merge roles
+        Set<String> mergedRoles = new HashSet<>(this.roles);
+        mergedRoles.addAll(other.getRoles());
+
+        // Merge attributes
+        Map<String, Object> mergedAttributes = new HashMap<>(this.attributes);
+        other.getAttributes().forEach(mergedAttributes::putIfAbsent);
+
+        // Create a new User with the combined roles and attributes
+        return new User(this.name, mergedRoles, mergedAttributes);
+    }
 }
